@@ -1,0 +1,37 @@
+.intestazione {
+	padding:2%
+}
+
+div.sbs-title {
+	font: 1.5em Arial, sans-serif; /* "Helvetica Neue", Helvetica,  */
+	padding:2%;
+	text-align:center;
+}
+
+span[ana="descrizione"],span.diff.change[ana="descrizione"] {
+	background-color:SteelBlue
+}
+
+span[ana="azione"],span.diff.change[ana="azione"] {
+	background-color:IndianRed
+}
+
+span[ana="valoricavall"],span.diff.change[ana="valoricavall"] {
+	background-color:green
+}
+
+span[ana="amor"],span.diff.change[ana="amor"] {
+	background-color:red
+}
+
+span[ana="relig"],span.diff.change[ana="relig"] {
+	background-color:Orange
+}
+
+span[ana="rip-prima"],span.diff.change[ana="rip-prima"] {
+	background-color:yellow
+}
+
+#legenda {
+	padding:1%
+}
