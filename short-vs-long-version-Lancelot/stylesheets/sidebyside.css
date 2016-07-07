@@ -44,6 +44,7 @@ div.canvas-div {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+	color:white
 }
 
 /* div containing the left witness for comparison */ 
