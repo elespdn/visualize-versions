@@ -66,7 +66,7 @@ div.canvas-div {
 }
 
 #connections-div{
-   outline: 1px solid #227799;
+   outline: 1px solid Black;
 }
 
 #wit-scroller {
@@ -98,12 +98,12 @@ div.witness-text {
 /* Note: bit after the comma means if a tag that has both diff and move */
 /* the diff style has priority */ 
 span.diff.change {
-    background-color: #d5d9ff;
+    background-color: LightGrey;
     color: black;
     font-weight: 200;
 }
 span.diff.change.lit {
-   background-color: #6b7bff;
+   background-color: DimGrey;
    color: #eff0ff;
 }
 span.diff.add {
@@ -117,10 +117,10 @@ span.diff.del.lit {
    background-color: #c44 !important;
 }
 span.diff, span.diff span.move  {
-    background-color: #d5d9ff;
+    background-color: LightGrey;
 }
 span.diff.lit, span.diff.lit span.move   {
-    background-color: #8792ff ;
+    background-color: DimGrey ;
 }
 span.move  {
     background-color: #eeeeee;
@@ -129,12 +129,12 @@ span.move  {
 
 
 #connector-prototype {
-   background-color: #d5d9ff;
+   background-color: LightGrey;
    color: #ffffff;
 }
 #lit-connector-prototype {
-   background-color: #8792ff;
-   color: #8792ff;
+   background-color: DimGrey;
+   color: DimGrey;
 }
 #move-conn-prototype {
    background-color: #eeeeee;
