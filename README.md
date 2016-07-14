@@ -8,4 +8,4 @@ Comparaison des deux versions principales, longue et brève. Épisode: fin de la
 
 Some topics are highlighted with colors (and a checklist  for the topic will be available too).
 
-**SIDE BY SIDE visualization uses code from [Juxta Web Service](github.com/performant-software/juxta-service).**
+**SIDE BY SIDE visualization uses code from [Juxta Web Service](https://github.com/performant-software/juxta-service).**
