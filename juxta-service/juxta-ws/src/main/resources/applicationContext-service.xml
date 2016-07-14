@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <context:property-placeholder system-properties-mode="OVERRIDE" location="file:config/ws.properties"/>
+    
+    <bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+       <property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+       <property name="targetMethod" value="initLogging" />
+       <property name="arguments">
+          <list>
+             <value>file:config/log4j.properties</value>
+          </list>
+       </property>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:annotation-driven proxy-target-class="true" />
+
+    <alias name="dataSource" alias="repositoryDataSource"/>
+    <alias name="transactionManager" alias="repositoryTransactionManager"/>
+    <import resource="classpath:/eu/interedition/text/rdbms/repository-context.xml"/>
+
+    <context:component-scan base-package="org.juxtasoftware"/>
+    
+    <!-- set up lucene -->
+    <util:constant id="luceneVersion" static-field="org.apache.lucene.util.Version.LUCENE_36"/>
+    <bean id="luceneAnalyzer" class="org.apache.lucene.analysis.standard.StandardAnalyzer" >
+        <constructor-arg ref="luceneVersion"/>
+    </bean>
+    <bean id="luceneDirectory" class="org.apache.lucene.store.NIOFSDirectory" factory-method="open">
+        <constructor-arg>
+            <bean class="java.io.File"  scope="prototype">
+                <constructor-arg value="${juxta.lucene.indexDir}" />
+            </bean>
+        </constructor-arg>
+
+    </bean>
+    <bean id="indexWriter" class="org.apache.lucene.index.IndexWriter" >
+        <constructor-arg ref="luceneDirectory" />
+        <constructor-arg>
+            <bean class="org.apache.lucene.index.IndexWriterConfig">
+                <constructor-arg ref="luceneVersion"/>
+                <constructor-arg ref="luceneAnalyzer" />
+            </bean>
+        </constructor-arg>
+    </bean>
+    <bean id="indexReader" class="org.apache.lucene.index.IndexReader"  factory-method="open" scope="prototype">
+        <constructor-arg ref="luceneDirectory"/>
+    </bean>
+    <bean id="indexSearcher" class="org.apache.lucene.search.IndexSearcher" depends-on="indexWriter" scope="prototype">
+        <constructor-arg ref="indexReader"/>
+    </bean>
+    <bean id="queryParser" class="org.apache.lucene.queryParser.QueryParser" scope="prototype">
+        <constructor-arg ref="luceneVersion"/>
+        <constructor-arg value="content" />
+        <constructor-arg ref="luceneAnalyzer"/>
+    </bean>
+    <bean id="hitsPerPage" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.lucene.hitsPerPage}" />
+    </bean>
+    <bean id="fragSize" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.lucene.fragSize}" />
+    </bean>
+    <bean id="phraseSlop" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.lucene.phraseSlop}" />
+    </bean>
+
+    <!-- enabled @Scheduled -->
+    <task:annotation-driven />
+    <task:executor id="executor" pool-size="${juxta.concurrent.tasks}" queue-capacity="200" />
+    <task:executor id="collate-executor" pool-size="${juxta.concurrent.collations}" queue-capacity="200" />
+    
+    <!-- property to set usage ChallengeAuthenticator for all requests -->
+    <bean id="useAuthenticator" class="java.lang.Boolean" factory-method="valueOf">
+        <constructor-arg value="${juxta.enable.authenticator}" />
+    </bean>
+    <bean id="authenticatorUser" class="java.lang.String" factory-method="valueOf">
+        <constructor-arg value="${juxta.authenticator.user}" />
+    </bean>
+    <bean id="authenticatorPass" class="java.lang.String" factory-method="valueOf">
+        <constructor-arg value="${juxta.authenticator.password}" />
+    </bean>
+    
+    <!-- properties to enforce some limits -->
+    <bean id="maxSourceSize" class="java.lang.Long" factory-method="valueOf">
+        <constructor-arg value="${juxta.source.max}" />
+    </bean>
+     <bean id="maxSetWitnesses" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.set.maxWitnesses}" />
+    </bean>
+    
+    <!-- property to set average size of alignments (in bytes) -->
+    <bean id="averageAlignmentSize" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.alignment.size}" />
+    </bean>
+    
+    <!-- property to set lifespan of cached visualization data (hours) -->
+    <bean id="cacheLifespan" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.cache.lifespan}" />
+    </bean>
+    
+    <!-- property to toggle capture of metrics -->
+    <bean id="captureMetrics" class="java.lang.Boolean" factory-method="valueOf">
+        <constructor-arg value="${juxta.captureMetrics}" />
+    </bean>
+    
+    <!-- batch limits -->
+    <bean id="tokenizationBatchSize" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.tokenization.batch}" />
+    </bean>
+    <bean id="collationBatchSize" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.collation.batch}" />
+    </bean>
+     <bean id="visualizationBatchSize" class="java.lang.Integer" factory-method="valueOf">
+        <constructor-arg value="${juxta.visualization.batch}" />
+    </bean>
+    
+    <!-- multicolor side by side -->
+    <bean id="multiColorSidebySide" class="java.lang.Boolean" factory-method="valueOf">
+        <constructor-arg value="${juxta.sidebyside.multicolor}" />
+    </bean>
+    
+    
+    <!-- Juxta WS version property -->
+    <bean id="version" class="java.lang.String" factory-method="valueOf">
+        <constructor-arg value="1.8.3-BETA"/>
+    </bean>
+</beans>

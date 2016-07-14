@@ -1,0 +1,762 @@
+/* condensed header stuff */
+#condensed-base-name {
+   font-size: 0.8em;
+   font-weight: 200;
+}
+
+.wit-click-area {
+   cursor: pointer;
+}
+
+.base {
+   cursor: default;
+}
+
+.condensed-witnesses-popup {
+   display: none;
+   position: fixed;
+   width: 350px;
+   height: auto;
+   text-align: center;
+   z-index: 1000;
+   font-size: 0.9em;
+   font-weight: 300;
+   background-color: #eee;
+   border: 1px solid #666;
+   -moz-box-shadow: 5px 5px 5px #999;
+   -webkit-box-shadow: 5px 5px 5px #999;
+   box-shadow: 5px 5px 5px #999;
+   -mox-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   border-radius: 5px;
+   padding: 0px 0px 5px 0px;
+}
+
+#sort-header {
+   font-size: 0.8em;
+   font-weight: 200;
+   float: right;
+   margin-top: 2px;
+   background-image: url("/juxta/images/dropdown.png");
+   background-repeat: no-repeat;
+   background-position: 40px 5px;
+   width: 55px;
+   cursor: pointer;
+}
+
+.dropdown hr {
+   width: 100%;
+   border: 1px solid #dddddd;
+   margin: 5px 0;
+}
+
+.dropdown .sort-radio {
+   width: 10px;
+   height: 8px;
+   margin: 0 6px 0 0;
+   position: relative;
+   top: -3px;
+   cursor: pointer;
+}
+#divider-row {
+   cursor: default;
+}
+.dropdown li {
+   list-style-type: none;
+   padding: 0px 3px 2px 3px;
+   margin: 2px;
+   cursor: pointer;
+}
+
+.header .dropdown {
+   display: none;
+   position: absolute;
+   background-color: white;
+   margin: 2px 0px;
+   padding: 4px;
+   border: 1px solid;
+   -mox-border-radius: 0 0 5px 5px;
+   -webkit-border-radius: 0 0 5px 5px;
+   border-radius: 0 0 5px 5px;
+   -moz-box-shadow: 0px 3px 10px #777;
+   -webkit-box-shadow: 0px 3px 10px #777;
+   box-shadow: 0px 3px 10px #777;
+   z-index: 100;
+   font-size: 0.9em;
+   text-align: left;
+   font-weight: 200;
+}
+
+#sort-header:hover {
+   color: white;
+   text-shadow: 0px 0px 10px black, 1px 1px 1px black;
+}
+
+#witness-select {
+   margin: 10px 9px 4px 10px;
+   width: 95%;
+}
+
+#condensed-header span {
+   float: left;
+   font-size: 0.85em;
+   font-weight: 200;
+}
+p.base-name {
+   font-size: 0.85em;
+   display: inline-block;
+   margin: 0 4px;
+   width: 80%;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+   float: left;
+   font-weight: 200;
+}
+p.set-title {
+   display: inline-block;
+   margin: 0 4px;
+   width: 95%;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+}
+
+#set-title {
+   font-weight: 400;
+   text-align: center;
+   margin-bottom: 5px;
+}
+
+/* div containing al files in the comparison set */
+div.files {
+   border-radius: 5px 5px 0 0;
+   -mox-border-radius: 5px 5px 0 0;
+   -webkit-border-radius: 5px 5px 0 0;
+   width: 25%;
+   float: left;
+   border: 1px solid #cccccc;
+   overflow: hidden;
+   background-color: #ffffff;
+   margin: 0;
+   padding: 0;
+   line-height: 1.4;
+}
+
+.set-file {
+   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-weight: 300;
+   border-bottom: 1px solid #cccccc;
+}
+
+.visibility-toggle {
+   cursor: pointer;
+   width: 16px;
+   height: 16px;
+   margin-left: 4px;
+   margin-right: 3px;
+   float: left;
+   padding: 0px;
+   position: relative;
+   top: 2px;
+   display: inline-block;
+   background-image: url("/juxta/images/show_hide.png");
+   background-position: 0 0;
+}
+
+.base-visibility {
+   top: 3px;
+   margin-left: 0px;
+   cursor: default;
+}
+
+.hidden-witness {
+   color: #ccc;
+}
+
+/** TOOLBAR **/
+.heatmap-toolbar {
+   border-bottom: 1px solid #999;
+   border-top: 1px solid #999;
+   background-color: #f5f5f5;
+   top: -1px;
+   position: relative;
+   text-align: right;
+   padding: 0px 2px 3px 0px;
+   margin: 0;
+}
+
+.heatmap-scroller {
+   overflow: scroll;
+   overflow-x: hidden;
+}
+
+.page-break {
+   color: #aaaaaa;
+   cursor: default;
+   font-weight: bolder;
+}
+
+/* Witness entry in comparison set div */
+div.witness {
+   margin-top: 2px;
+   padding-left: 2px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   cursor: pointer;
+   width: 90%;
+}
+#files table {
+   border: none;
+   float: right;
+   margin: 4px 2px 2px 0;
+   width: 100%;
+}
+#files td {
+   padding: 0px 5px;
+   border: 0;
+}
+#files .change-index {
+   width: 50%;
+}
+#files  .chart-label {
+   text-align: right;
+   font-size: 0.8em;
+   font-style: italic;
+   color: #aab;
+   font-weight: 200;
+}
+td.chart-icon {
+   width: 15px;
+}
+.annotated {
+   background-image: url("/juxta/images/has-annotations.png");
+   background-repeat: no-repeat;
+   background-position: 4px 1px;
+}
+
+/* Base document entry in comparison set div */
+div.base {
+   background-color: #f8f8ff;
+   padding-left: 0.2em;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   cursor: default;
+}
+#base-tag {
+   margin-right: 3px;
+   margin-bottom: 5px;
+   font-size: 0.8em;
+   text-align: right;
+}
+
+/* Div for headmap, notes and margin boxes */
+/* This version is when the full UI is used */
+div.heatmap-div {
+   border-radius: 5px 5px 0 0;
+   -mox-border-radius: 5px 5px 0 0;
+   -webkit-border-radius: 5px 5px 0 0;
+   border: 1px solid #cccccc;
+   float: right;
+   width: 74.5%;
+   height: auto;
+   margin: 0;
+   padding: 0;
+   background-color: #ffffff;
+   cursor: default;
+}
+
+.juxta-button.condensed {
+   font-size: 0.8em;
+   margin: 1px;
+   padding: 2px 6px;
+}
+.heatmap-div.condensed {
+   border: 0 !important;
+   float: none !important;
+}
+.heatmap-text.condensed {
+   float: none !important;
+}
+.condensed {
+   width: auto !important;
+   font-size: 0.9em !important;
+}
+.margin-box.condensed {
+   width: 300px !important;
+   background-color: #EFF1EF;
+   font-size: 0.9em !important;
+}
+div.margin-boxes.condensed {
+   position: relative;
+   width: auto;
+   float: left !important;
+}
+#condensed-list-button {
+   float: left;
+}
+#full-size-link {
+   float: right;
+}
+#condensed-heatmap-footer {
+   background-color: #f5f5f5;
+   font-size: 0.85em;
+   font-weight: 400;
+   padding: 2px;
+   margin-bottom: 0;
+   border: 0;
+   color: #557;
+}
+.dimmed {
+   background-color: #fafafa;
+   color: #999;
+}
+
+#hm-overlay {
+   z-index: 1000;
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   background-color: rgba(255,255,255,0.7);
+}
+
+/* Div for headmap, notes and margin boxes */
+/* This version is when the SIMPLE UI is used */
+div.simple-heatmap-div {
+   margin: 0;
+   padding: 0;
+   width: auto;
+   height: auto;
+}
+
+/** Contains the text of the heatmap */
+div.heatmap-text {
+   padding: 0.5em;
+   float: left;
+   width: 70%;
+   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-weight: 300;
+   line-height: 1.4;
+}
+
+/** Contains all of the NOTES */
+div.note-boxes {
+   padding: 0;
+   float: right;
+   width: 28%;
+   height: 100%;
+}
+
+/* The note box */
+div.note {
+   font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-weight: 300;
+   line-height: 1.2;
+   padding: 0.1em;
+   border-radius: 3px;
+   -mox-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border: 1.5px solid #bca902;
+   background-color: #fffcc8;
+   margin-bottom: 0.25em;
+   -moz-box-shadow: 2px 2px 2px #999;
+   -webkit-box-shadow: 2px 2px 2px #999;
+   box-shadow: 2px 2px 2px #999;
+}
+div.highlighted {
+   background-color: #fffe38;
+   border: 1.5px solid #ff0000;
+}
+span.note-anchor-highlighted {
+   background-color: #fffe38;
+   outline: 1px solid #ff0000;
+   padding: 0.1em;
+   font-size: 1em;
+   -moz-box-shadow: 2px 2px 2px #999;
+   -webkit-box-shadow: 2px 2px 2px #999;
+   box-shadow: 2px 2px 2px #999;
+}
+
+/* Large box containing a group of note boxes */
+div.margin-boxes {
+   padding: 6px 3px 3px 3px;
+   float: right;
+   width: 26%;
+   display: none;
+   background-color: #eee;
+   border-radius: 5px;
+   -mox-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   margin-right: 2px;
+   border: 1px solid #999;
+}
+p.diffs-title {
+   margin: 0 0 3px 0;
+   font-size: 0.75em;
+   position: relative;
+   top: -3px;
+   text-align: center;
+   font-weight: 500;
+   background-color: #ccc;
+   color: #444;
+   padding: 0;
+   border: 1px solid #999;
+   border-radius: 5px 5px 0 0;
+   -mox-border-radius: 5px 5px 0 0;
+   -webkit-border-radius: 5px 5px 0 0;
+}
+div.margin-box {
+   margin: 0px auto 5px auto;
+   background-color: white;
+   border-radius: 3px;
+   -mox-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border: 1px solid #008000;
+   font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-weight: 200;
+   line-height: 1.2;
+   display:none;
+}
+div.box-title-bar {
+   border-radius: 3px 3px 0 0;
+   -mox-border-radius: 3px 3px 0 0;
+   -webkit-border-radius: 3px 3px 0 0;
+   margin: 0;
+   padding-top: 0;
+   padding-left: 0.25em;
+   padding-bottom: 0;
+   padding-right: 0;
+   background-color: #bae2ba;
+   border-bottom: 1px solid #008000;
+   font-weight: bold;
+}
+p.box-title {
+   margin: 1px;
+   float: left;
+}
+.group-annotation {
+   font-size: 0.75em;
+   font-weight: 500;
+   background-color: white;
+   border-radius: 3px;
+   -mox-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border: 1px solid #999;
+   display:none;
+}
+.group-annotation .ua-toolbar {
+   text-align: center;
+   text-align: center;
+   background-color: #ccc;
+   border-radius: 3px 3px 0 0;
+   -mox-border-radius: 3px 3px 0 0;
+   -webkit-border-radius: 3px 3px 0 0;
+   border-bottom: 1px solid #999;
+}
+.group-edit-annotation {
+   border: 1px solid #999;
+   background-color: white;
+   border-radius: 3px;
+   -mox-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   display:none;
+}
+.group-edit-annotation .ua-toolbar {
+   background-color: #ccc;
+   font-weight:500;
+   text-align: center;
+   border-bottom: 1px solid #999;
+   font-size: 0.75em;
+   color: #444;
+   -webkit-border-radius: 3px 3px 0 0;
+   border-radius: 3px 3px 0 0;
+   -mox-border-radius: 3px 3px 0 0;
+}
+div.group-del-annotation {
+   font-weight: 400;
+   background-color: #dfdfdf;
+   -webkit-border-radius: 0 3px;
+   -mox-border-radius: 0 3px;
+   border-radius: 0 3px;
+   border-top: 1px solid #999;
+   color: #444;
+   padding: 2px 2px 2px 5px;
+   display:none;
+}
+.anno-add, .anno-edit {
+   float: right;
+   padding: 3px;
+   cursor: pointer;
+   background-image: url("/juxta/images/edit2.png");
+   margin: 0px 0px 0 0;
+   height: 9px;
+   width: 9px;
+   background-repeat: no-repeat;
+   background-position: 0;
+}
+.anno-del {
+   float: right;
+   padding: 3px;
+   cursor: pointer;
+   background-image: url("/juxta/images/del-anno.png");
+   margin: 0px 4px 0px 0px;
+   height: 9px;
+   width: 9px;
+   background-repeat: no-repeat;
+   background-position: 0;
+}
+div.box-annotation {
+   margin-top: 2px;
+}
+div.box-edit-annotation {
+   margin-top: 2px;
+   display: none;
+}
+div.anno-buttons {
+   margin: 5px;
+}
+div.box-del-annotation {
+   margin: 0;
+   padding: 5px;
+   background-color: #eee;
+   border-top: 1px solid #ccc;
+   display: none;
+}
+p.box-annotation {
+   margin-top: 2px;
+   margin-bottom: 0px;
+   padding: 5px;
+   font-style: italic;
+   color: #999;
+}
+div.ua-toolbar {
+   background-color: #eee;
+   border-top: 1px solid #ccc;
+   border-bottom: 1px solid #ccc;
+   padding: 1px 0;
+}
+.ua-toolbar span {
+   position: relative;
+      top: 1px;
+      left: 4px;
+      color: #888;
+}
+p.box-content {
+   margin: 0;
+   padding: 0.3em 0.2em 0.4em 0.4em;
+}
+span.note-anchor {
+   background-color: #fffcc8;
+   outline: 1px solid #bca902;
+   padding: 0.1em;
+   font-size: 1em;
+}
+span.note-anchor-hidden {
+   background-color: transparent;
+   outline: 0;
+   padding: 0em;
+   font-size: 1em;
+}
+span.active {
+   background-color: #bae2ba;
+   outline: 1px solid #008000;
+   color: #050;
+}
+
+/** TEI Revsion tag styles **/
+.rev.add {
+   font-weight: bold;
+   text-decoration: underline;
+   color: #008000;
+}
+.rev.show-rev {
+   display: inline;
+}
+.rev.hide-rev {
+   display: none;
+}
+.rev.reveal {
+   display: inline !important;
+}
+.rev.delete {
+   font-weight: bold;
+   text-decoration: line-through;
+   color: #800000;
+}
+.plain-revs {
+   font-weight: 300 !important;
+   color: #000 !important;
+   text-decoration: none !important;
+}
+.show-all {
+   display: inline !important;
+}
+
+span.del {
+   color: #aa0000;
+   font-size: 0.8em;
+}
+span.change {
+   color: #0000bb;
+   font-weight: bolder;
+}
+
+/** Heat map colors */
+span.heatmap {
+   cursor: pointer;
+}
+.heat1 {
+   background-color: rgb(239,240,255);
+}
+.heat2 {
+   background-color: rgb(213,217,255);
+}
+.heat3 {
+   background-color: rgb(187,193,255);
+}
+.heat4 {
+   background-color: rgb(161,170,255);
+}
+.heat5 {
+   background-color: rgb(135,146,255);
+}
+.heat6 {
+   background-color: rgb(109,123,255);
+}
+.heat7 {
+   background-color: rgb(83,99,255);
+}
+.heat8 {
+   background-color: rgb(57,76,255);
+}
+.heat9 {
+   background-color: rgb(51,71,250);
+}
+
+/** Annotations popup */
+.edit-annotation-popup {
+   display: none;
+   text-align: center;
+   position: fixed;
+   z-index: 1000;
+   font-size: 0.9em;
+   font-weight: 300;
+   background-color: #eee;
+   border: 1px solid #666;
+   -moz-box-shadow: 5px 5px 5px #999;
+   -webkit-box-shadow: 5px 5px 5px #999;
+   box-shadow: 5px 5px 5px #999;
+   -mox-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   border-radius: 5px;
+   padding: 0px;
+}
+.annotation-editor {
+   height: 65px;
+   margin: 0;
+   border: 1px solid #ccc;
+   resize: none;
+   outline: 0;
+   width: 93%;
+   margin: 5px 2% 0 2%;
+}
+#confirm-overlay {
+   z-index: 999;
+   cursor: wait;
+   display: none;
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   background-color: rgba(128, 128, 128, 0.5);
+   top: 0%;
+   left: 0%;
+}
+#delete-annotation-popup {
+   display: none;
+   position: fixed;
+   z-index: 1000;
+   font-size: 0.85em;
+   background-color: #eee;
+   border: 1px solid #666;
+   -moz-box-shadow: 5px 5px 5px #999;
+   -webkit-box-shadow: 5px 5px 5px #999;
+   box-shadow: 5px 5px 5px #999;
+   -mox-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   border-radius: 5px;
+   padding: 0;
+   width: 180px;
+}
+#delete-annotation-popup p {
+   padding: 10px 5px 5px 10px;
+   margin: 0;
+   font-weight: 200;
+}
+#annotation-browser {
+   position: fixed;
+   background-color: white;
+   border: 1px solid #444;
+   width: 25%; 
+   box-shadow: 0 0 8px #555;
+   -moz-box-shadow: 0 0 8px #555;
+   -wek-kit-box-shadow: 0 0 8px #555;
+   font-weight: 200;
+}
+#ua-scroller {
+   height: 100%;
+   background-color: #d5d5d5;
+   overflow-y: auto;
+   overflow-x: hidden;
+   font-size: 0.9em;
+}
+div.ua {
+   border-top: 1px solid #aaa;
+   border-bottom: 1px solid #aaa;
+   margin-bottom: 5px;
+   background-color:#eee;
+}
+.show-ua {
+   background-image: url("/juxta/images/find.png");
+   width: 16px;
+   height: 16px;
+   float: right;
+   margin: 4px 7px 0px 0px;
+   cursor: pointer;
+}
+p.ua {
+   margin: 0px;
+   padding:4px;
+   font-size: 0.85em;
+   float:left;
+}
+table.ua {
+   width: 98.5%;
+   border-collapse: collapse;
+   border: 1px solid #aaa;
+   margin: 0 auto 3px auto;
+   background-color:#fefefe
+}
+table.ua td, th {
+   padding: 0 5px;
+   font-size: 0.85em;
+   border-right: 1px solid #aaa;
+   border-top: 1px solid #aaa;
+}
+table.ua th {
+   color: #888;
+   background-color:#fefefe
+}
+tr.ua-header {
+   border-bottom: 1px solid;
+   text-align: left; 
+}
+.outlined {
+   outline: 3px solid #eb0;
+}
+
+
+
+
+

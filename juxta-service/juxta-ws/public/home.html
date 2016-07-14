@@ -1,0 +1,51 @@
+<h4>Synopsis</h4>
+
+<p>
+The Juxta family of software (Juxta, Juxta WS, and Juxta Commons) allows you to
+compare and collate versions of the same textual work. The Juxta Web
+Service (Juxta WS) is an open source Java application that provides the core collation and
+visualization functions of Juxta in a server environment via an API. Development
+of Juxta WS was supported by NINES at the University of Virginia.
+</p>
+
+<h4>Features</h4>
+
+<p>Juxta WS can collate two or more versions of the same textual work ("witnesses")
+and generate a list of alignments as well as two different styles of
+visualization suitable for display on the web. The "heat map" visualization shows a base text
+with ranges of difference from the other witnesses highlighted. The
+"side by side" visualization shows two of the witnesses in synchronously scrolling
+columns, with areas of difference highlighted.
+</p>
+
+<h4>Collation Pipeline Overview</h4>
+
+<p>The Juxta WS collation process is based on the Gothenburg Model, which breaks
+collation in this pipeline of steps:</p>
+
+<ol>
+   <li>Raw Content is added to the system and becomes a "source" (XML and TXT are
+    the accepted formats).</li>
+   
+   <li>The source is transformed into a "witness," with XML sources being
+      transformed by XSLT and TXT sources passed through with limited metadata added.</li>
+   
+   <li>Witness are passed through a tokenizer that breaks text content into tokens
+    based on whitespace and/or punctuation settings. Those tokens are stored in
+    the database as offset / length pairs.</li>
+   
+   <li>Streams of witness tokens are then fed into the diff component, which finds
+    areas of change. This diff is done with java-diff-utils from Google, and is an
+    implementation of the Myers diff algorithm.</li>
+   
+   <li>These differences are aligned in a process by which gaps are
+      inserted into the token stream such that the tokens of all witnesses match up. 
+      These gaps fill in holes in the token stream where one witness has missing 
+      content relative to another (for more information and examples, see the
+      TEI wiki on Textual Variance). Once they are aligned, tokens that have been 
+      found to have differences are paired, and this information is stored in the database.</li>
+    
+   <li>Visualizations leverage the alignment information to inject markup into
+    witness texts. When passed up to a web browser, this marked-up
+    text is rendered according to the selected visualization.</li>
+</ol>

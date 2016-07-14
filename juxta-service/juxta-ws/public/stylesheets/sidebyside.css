@@ -1,0 +1,224 @@
+/** 
+ *     CSS for side by side view
+ */
+
+/* div containing the loc/unlock button */
+#scroll-mode {
+   float: left;
+   width: 5.5%;
+   text-align: center;
+}
+#scroll-mode-img {
+    border: 1px solid #BBB;
+    padding: 2px 8px 3px 8px;
+    background: #EEE;
+    border-radius: 3px;
+    color: #000000;
+}
+#scroll-mode-img:hover {
+    -moz-box-shadow: 2px 2px 2px #999;
+    -webkit-box-shadow: 2px 2px 2px #999;
+    box-shadow: 1px 1px 1px #999;
+    text-decoration: none;
+    background: #FFF;
+}
+#scroll-mode-img:active {
+    background: #ccc;
+    -moz-box-shadow: 0 0 0 #000;
+    -webkit-box-shadow: 0 0 0 #000;
+    box-shadow: 0 0 0 #000;
+     border: 1px inset #BBB;
+}
+
+/* divs used for rendering the diff connections */
+div.canvas-div {
+    position: absolute;
+    overflow:scroll;
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+}
+
+.sbs-title{
+    float:left;
+    width:80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* div containing the left witness for comparison */ 
+.sbs-witness {
+    font-weight: 300;
+    line-height: 1.4;
+    border-radius: 5px 5px 0 0;
+    -mox-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    width: 47%; 
+    border: 1px solid #cccccc;  
+    overflow: hidden;
+    background-color: #ffffff;
+    margin:0;
+    padding:0;
+    position: relative;
+}
+#left-witness {
+    float: left;
+}
+
+#connections-div{
+   outline: 1px solid #227799;
+}
+
+#wit-scroller {
+   height: 150px;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   background: white;
+   margin: 10px 9px 4px 10px;
+   outline: 1px solid #aaa;
+}
+
+/* div containing the right witness for comparison */ 
+#right-witness {
+    float: right;
+}
+
+/* Div containing actual witness text */
+div.witness-text {
+    padding: 0 5px 0 5px;
+    margin: 0;
+    font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.4;    
+    overflow: hidden;
+    height: 0px;
+}
+
+/* DIFF span style */
+/* Note: bit after the comma means if a tag that has both diff and move */
+/* the diff style has priority */ 
+span.diff.change {
+    background-color: #d5d9ff;
+    color: black;
+    font-weight: 200;
+}
+span.diff.change.lit {
+   background-color: #6b7bff;
+   color: #eff0ff;
+}
+span.diff.add {
+   background-color: #beb;
+}
+span.diff.add.lit {
+   background-color: #383;
+   color: #efffef;
+}
+span.diff.del.lit {
+   background-color: #c44 !important;
+}
+span.diff, span.diff span.move  {
+    background-color: #d5d9ff;
+}
+span.diff.lit, span.diff.lit span.move   {
+    background-color: #8792ff ;
+}
+span.move  {
+    background-color: #eeeeee;
+    padding: 0.15em;
+}
+
+
+#connector-prototype {
+   background-color: #d5d9ff;
+   color: #ffffff;
+}
+#lit-connector-prototype {
+   background-color: #8792ff;
+   color: #8792ff;
+}
+#move-conn-prototype {
+   background-color: #eeeeee;
+   color: #aaaaaa;
+}
+
+.sbs-button {
+    float:right;
+    padding: 2px 6px 2px 6px !important;
+}
+
+/* Popup */
+.witnesses-popup {
+    display: none;
+    position: fixed;
+    width:350px;
+    height: auto;
+    text-align:center;
+    z-index: 1000;
+    font-size: 0.9em;
+    font-weight: 300;
+    background-color: #eee;
+    border: 1px solid #666;
+    -moz-box-shadow: 5px 5px 5px #999;
+    -webkit-box-shadow: 5px 5px 5px #999;
+    box-shadow: 5px 5px 5px #999;
+    -mox-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0px 0px 5px 0px;
+}
+table.witness-select {
+    text-align:left;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.wit-sel {
+   border: 0;
+   font-size: 0.9em;
+   padding: 0;
+}
+
+p.witness-option {
+   padding: 2px 5px;
+   border: 0;
+   margin: 2px;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+   width: 320px;
+}
+
+.sbs-wit-hover {
+   background-color: #DAEEDA;
+   outline: 1px solid #060;
+}
+.sbs-wit-selected {
+    background-color: #6ECE6E;
+    outline: 1px solid #060;
+}
+.popup-buttons {
+    margin: 5px;
+}
+div.more-scroller {
+   background-color: #ccc;
+   text-align: center;
+   border-top: 1px solid #999;
+   border-bottom: 1px solid #999;
+   display:none;
+   margin: 0;
+}
+p.more-scroller {
+   background-image: url("/juxta/images/more.png");
+   background-repeat: no-repeat;
+   padding:0;
+   height:12px;
+   margin: 2px auto;
+   width: 14px;
+}
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+    <template guid="ram" isDefault="false" name="ram" rootTagName="ram">
+        <tag action="EXCLUDE" name="add" newLine="false"/>
+        <tag action="EXCLUDE" name="back" newLine="false"/>
+        <tag action="INCLUDE" name="closer" newLine="true"/>
+        <tag action="INCLUDE" name="divheader" newLine="true"/>
+        <tag action="INCLUDE" name="epage" newLine="true"/>
+        <tag action="EXCLUDE" name="front" newLine="false"/>
+        <tag action="INCLUDE" name="l" newLine="true"/>
+        <tag action="INCLUDE" name="lb" newLine="true"/>
+        <tag action="INCLUDE" name="lg" newLine="true"/>
+        <tag action="INCLUDE" name="p" newLine="true"/>
+        <tag action="EXCLUDE" name="ramheader" newLine="false"/>
+        <tag action="INCLUDE" name="title" newLine="true"/>
+    </template>
+</templates>

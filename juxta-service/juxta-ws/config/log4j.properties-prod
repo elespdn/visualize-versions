@@ -1,0 +1,31 @@
+
+# rolling appender for prouction use
+log4j.appender.rolling=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.rolling.File = logs/juxta-ws.log
+log4j.appender.rolling.Append = true
+log4j.appender.rolling.DatePattern = '.'yyy-MM-dd
+log4j.appender.rolling.layout=org.apache.log4j.PatternLayout
+log4j.appender.rolling.layout.ConversionPattern=%d{E MMM dd, HH:mm:ss} [%p] - %m\n
+
+# file appender for metrics logging 
+log4j.appender.metrics=org.apache.log4j.FileAppender
+#log4j.appender.metrics.File = /home/juxta/ws_metrics/metrics.log
+log4j.appender.metrics.File = logs/metrics.log
+log4j.appender.metrics.Append = true
+log4j.appender.metrics.layout=org.apache.log4j.PatternLayout
+log4j.appender.metrics.layout.ConversionPattern=%m\n
+
+# Logger configurations
+log4j.logger.juxtaWS=DEBUG, rolling
+log4j.logger.org.juxtasoftware.diff=DEBUG, rolling
+log4j.logger.metrics=INFO, metrics
+log4j.logger.org.springframework=INFO, rolling
+log4j.logger.com.jolbox.bonecp=INFO, rolling
+log4j.logger.eu.interedition.text=INFO, rolling
+log4j.logger.freemarker.cache=ERROR, rolling
+log4j.logger.org.apache.pdfbox=INFO, rolling
+log4j.logger.org.apache.commons.httpclient=INFO, rolling
+log4j.logger.org.docx4j=ERROR,rolling
+
+#log4j.category.com.googlecode.ehcache.annotations=DEBUG,stdout
+#log4j.additivity.com.googlecode.ehcache.annotations=false
